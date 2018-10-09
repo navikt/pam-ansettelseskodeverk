@@ -1,11 +1,10 @@
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
+import no.nav.arbeid.pam.Omfang;
 import org.junit.Test;
 
-import com.neovisionaries.i18n.LanguageCode;
+import java.util.Locale;
 
-import no.nav.arbeid.pam.Omfang;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class HeltidDeltidTest {
 
@@ -16,12 +15,12 @@ public class HeltidDeltidTest {
 
     @Test
     public void skalGiKorrektTekstVedBrukAvEksisterendeLanguageCode() {
-        assertThat(Omfang.HELTID.tekst(LanguageCode.nb), is("Heltid"));
+        assertThat(Omfang.HELTID.tekst(new Locale("nb")), is("Heltid"));
     }
 
     @Test
     public void skalGiDefaultTekstVedBrukAvIkkeeksisterendeLanguageCode() {
-        assertThat(Omfang.HELTID.tekst(LanguageCode.ee), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst(new Locale("ee")), is("HELTID"));
     }
 
     @Test
@@ -41,14 +40,12 @@ public class HeltidDeltidTest {
 
     @Test
     public void skalGiDefaultTekstVedBrukAvNullIsoString() {
-        String nullString = null;
-        assertThat(Omfang.HELTID.tekst(nullString), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst((String) null), is("HELTID"));
     }
 
     @Test
     public void skalGiDefaultTekstVedBrukAvNullLanguageCode() {
-        LanguageCode nullLc = null;
-        assertThat(Omfang.HELTID.tekst(nullLc), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst((Locale) null), is("HELTID"));
     }
 
 }

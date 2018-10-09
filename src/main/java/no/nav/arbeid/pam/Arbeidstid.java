@@ -1,42 +1,43 @@
 package no.nav.arbeid.pam;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.neovisionaries.i18n.LanguageCode;
-
+@SuppressWarnings({"serial", "unused"})
 public enum Arbeidstid implements Kode {
 
-    @SuppressWarnings("serial")
-    LOERDAG("LØRDAG", new HashMap<LanguageCode, String>() {
+    LOERDAG("LØRDAG", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Lørdag");
-            put(LanguageCode.nn, "Lørdag");
+            put("nb", "Lørdag");
+            put("nn", "Lørdag");
         }
-    }), @SuppressWarnings("serial")
-    SOENDAG("SØNDAG", new HashMap<LanguageCode, String>() {
+    }),
+
+    SOENDAG("SØNDAG", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Søndag");
-            put(LanguageCode.nn, "Søndag");
+            put("nb", "Søndag");
+            put("nn", "Søndag");
         }
-    }), @SuppressWarnings("serial")
-    UKEDAGER("UKEDAGER", new HashMap<LanguageCode, String>() {
+    }),
+
+    UKEDAGER("UKEDAGER", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Ukedager");
-            put(LanguageCode.nn, "Ukedager");
+            put("nb", "Ukedager");
+            put("nn", "Ukedager");
         }
     });
 
-    protected String defaultTekst;
-    protected Map<String, String> sprakTekster = new HashMap<>();
+    private final String defaultTekst;
+    private final Map<String, String> sprakTekster;
 
-    private Arbeidstid(String defaultTekst, Map<LanguageCode, String> sprakTekster) {
+    Arbeidstid(String defaultTekst, Map<String, String> sprakTekster) {
         this.defaultTekst = defaultTekst;
-        sprakTekster.forEach((lc, tekst) -> this.sprakTekster.put(lc.name().toLowerCase(), tekst));
+        this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
     }
 
-    private Arbeidstid(String defaultTekst) {
-        this.defaultTekst = defaultTekst;
+    Arbeidstid(String defaultTekst) {
+        this(defaultTekst, Collections.emptyMap());
     }
 
     @Override

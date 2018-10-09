@@ -1,14 +1,14 @@
 package no.nav.arbeid.pam;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
-import com.neovisionaries.i18n.LanguageCode;
-
+@SuppressWarnings("unused")
 public interface Kode {
 
     String name();
-    
+
     default String getId() {
         return name();
     }
@@ -17,8 +17,8 @@ public interface Kode {
 
     Map<String, String> tekster();
 
-    default String tekst(LanguageCode sprak) {
-        return Optional.ofNullable(sprak).map(lc -> tekst(sprak.name())).orElse(defaultTekst());
+    default String tekst(Locale sprak) {
+        return Optional.ofNullable(sprak).map(lc -> tekst(sprak.getLanguage())).orElse(defaultTekst());
     }
 
     default String tekst(String iso2) {

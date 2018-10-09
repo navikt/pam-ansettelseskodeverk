@@ -1,42 +1,41 @@
 package no.nav.arbeid.pam;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.neovisionaries.i18n.LanguageCode;
-
+@SuppressWarnings({"serial", "unused"})
 public enum Arbeidstidsordning implements Kode {
 
-    @SuppressWarnings("serial")
-    SKIFT("SKIFT", new HashMap<LanguageCode, String>() {
+    SKIFT("SKIFT", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Skift");
-            put(LanguageCode.nn, "Skift");
+            put("nb", "Skift");
+            put("nn", "Skift");
         }
     }), @SuppressWarnings("serial")
-    TURNUS("TURNUS", new HashMap<LanguageCode, String>() {
+    TURNUS("TURNUS", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Turnus");
-            put(LanguageCode.nn, "Turnus");
+            put("nb", "Turnus");
+            put("nn", "Turnus");
         }
     }), @SuppressWarnings("serial")
-    VAKT("VAKT", new HashMap<LanguageCode, String>() {
+    VAKT("VAKT", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Vakt");
-            put(LanguageCode.nn, "Vakt");
+            put("nb", "Vakt");
+            put("nn", "Vakt");
         }
     });
 
-    protected String defaultTekst;
-    protected Map<String, String> sprakTekster = new HashMap<>();
+    private final String defaultTekst;
+    private final Map<String, String> sprakTekster;
 
-    private Arbeidstidsordning(String defaultTekst, Map<LanguageCode, String> sprakTekster) {
+    Arbeidstidsordning(String defaultTekst, Map<String, String> sprakTekster) {
         this.defaultTekst = defaultTekst;
-        sprakTekster.forEach((lc, tekst) -> this.sprakTekster.put(lc.name().toLowerCase(), tekst));
+        this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
     }
 
-    private Arbeidstidsordning(String defaultTekst) {
-        this.defaultTekst = defaultTekst;
+    Arbeidstidsordning(String defaultTekst) {
+        this(defaultTekst, Collections.emptyMap());
     }
 
     @Override

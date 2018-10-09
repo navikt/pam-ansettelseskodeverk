@@ -1,84 +1,92 @@
 package no.nav.arbeid.pam;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.neovisionaries.i18n.LanguageCode;
-
+@SuppressWarnings({"serial", "unused"})
 public enum Ansettelsesform implements Kode {
 
-    @SuppressWarnings("serial")
-    ENGASJEMENT("ENGASJEMENT", new HashMap<LanguageCode, String>() {
+    ENGASJEMENT("ENGASJEMENT", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Engasjement");
-            put(LanguageCode.nn, "Engasjement");
+            put("nb", "Engasjement");
+            put("nn", "Engasjement");
         }
-    }), @SuppressWarnings("serial")
-    FAST("FAST", new HashMap<LanguageCode, String>() {
+    }),
+
+    FAST("FAST", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Fast");
-            put(LanguageCode.nn, "Fast");
+            put("nb", "Fast");
+            put("nn", "Fast");
         }
-    }), @SuppressWarnings("serial")
-    FERIEJOBB("FERIEJOBB", new HashMap<LanguageCode, String>() {
+    }),
+
+    FERIEJOBB("FERIEJOBB", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Feriejobb");
-            put(LanguageCode.nn, "Feriejobb");
+            put("nb", "Feriejobb");
+            put("nn", "Feriejobb");
         }
-    }), @SuppressWarnings("serial")
-    PROSJEKT("PROSJEKT", new HashMap<LanguageCode, String>() {
+    }),
+
+    PROSJEKT("PROSJEKT", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Prosjekt");
-            put(LanguageCode.nn, "Prosjekt");
+            put("nb", "Prosjekt");
+            put("nn", "Prosjekt");
         }
-    }), @SuppressWarnings("serial")
-    SELVSTENDIG_NAERINGSDRIVENDE("SELVSTENDIG NÆRINGSDRIVENDE", new HashMap<LanguageCode, String>() {
+    }),
+
+    SELVSTENDIG_NAERINGSDRIVENDE("SELVSTENDIG NÆRINGSDRIVENDE", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Selvstendig næringsdrivende");
-            put(LanguageCode.nn, "Selvstendig næringsdrivende");
+            put("nb", "Selvstendig næringsdrivende");
+            put("nn", "Selvstendig næringsdrivende");
         }
-    }), @SuppressWarnings("serial")
-    SESONG("SESONG", new HashMap<LanguageCode, String>() {
+    }),
+
+    SESONG("SESONG", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Sesong");
-            put(LanguageCode.nn, "Sesong");
+            put("nb", "Sesong");
+            put("nn", "Sesong");
         }
-    }), @SuppressWarnings("serial")
-    VIKARIAT("VIKARIAT", new HashMap<LanguageCode, String>() {
+    }),
+
+    VIKARIAT("VIKARIAT", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Vikariat");
-            put(LanguageCode.nn, "Vikariat");
+            put("nb", "Vikariat");
+            put("nn", "Vikariat");
         }
-    }), @SuppressWarnings("serial")
-    TRAINEE("TRAINEE", new HashMap<LanguageCode, String>() {
+    }),
+
+    TRAINEE("TRAINEE", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Trainee");
-            put(LanguageCode.nn, "Trainee");
+            put("nb", "Trainee");
+            put("nn", "Trainee");
         }
-    }), @SuppressWarnings("serial")
-    LAERLING("LÆRLING", new HashMap<LanguageCode, String>() {
+    }),
+
+    LAERLING("LÆRLING", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Lærling");
-            put(LanguageCode.nn, "Lærling");
+            put("nb", "Lærling");
+            put("nn", "Lærling");
         }
-    }),@SuppressWarnings("serial")
-    ANNET("ANNET", new HashMap<LanguageCode, String>() {
+    }),
+
+    ANNET("ANNET", new HashMap<String, String>() {
         {
-            put(LanguageCode.nb, "Annet");
-            put(LanguageCode.nn, "Annet");
+            put("nb", "Annet");
+            put("nn", "Annet");
         }
     });
 
-    protected String defaultTekst;
-    protected Map<String, String> sprakTekster = new HashMap<>();
+    private final String defaultTekst;
+    private final Map<String, String> sprakTekster;
 
-    private Ansettelsesform(String defaultTekst, Map<LanguageCode, String> sprakTekster) {
+    Ansettelsesform(String defaultTekst, Map<String, String> sprakTekster) {
         this.defaultTekst = defaultTekst;
-        sprakTekster.forEach((lc, tekst) -> this.sprakTekster.put(lc.name().toLowerCase(), tekst));
+        this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
     }
 
-    private Ansettelsesform(String defaultTekst) {
-        this.defaultTekst = defaultTekst;
+    Ansettelsesform(String defaultTekst) {
+        this(defaultTekst, Collections.emptyMap());
     }
 
     @Override
