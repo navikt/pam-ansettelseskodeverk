@@ -1,4 +1,4 @@
-package no.nav.arbeid.pam;
+package no.nav.arbeid.pam.kodeverk.ansettelse;
 
 import java.util.Locale;
 import java.util.Map;

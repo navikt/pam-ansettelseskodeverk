@@ -1,12 +1,14 @@
-import no.nav.arbeid.pam.Omfang;
+package no.nav.arbeid.pam.kodeverk.ansettelse;
 import org.junit.Test;
+
+import no.nav.arbeid.pam.kodeverk.ansettelse.Omfang;
 
 import java.util.Locale;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class HeltidDeltidTest {
+public class OmfangTest {
 
     @Test
     public void skalGiDefaultTekst() {

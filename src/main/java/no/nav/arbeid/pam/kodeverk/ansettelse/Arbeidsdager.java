@@ -1,36 +1,42 @@
-package no.nav.arbeid.pam;
+package no.nav.arbeid.pam.kodeverk.ansettelse;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings({"serial", "unused"})
-public enum Omfang implements Kode {
+public enum Arbeidsdager implements Kode {
 
-
-    HELTID("HELTID", new HashMap<String, String>() {
+    LOERDAG("LØRDAG", new HashMap<String, String>() {
         {
-            put("nb", "Heltid");
-            put("nn", "Heltid");
+            put("nb", "Lørdag");
+            put("nn", "Lørdag");
         }
     }),
 
-    DELTID("DELTID", new HashMap<String, String>() {
+    SOENDAG("SØNDAG", new HashMap<String, String>() {
         {
-            put("nb", "Deltid");
-            put("nn", "Deltid");
+            put("nb", "Søndag");
+            put("nn", "Søndag");
+        }
+    }),
+
+    UKEDAGER("UKEDAGER", new HashMap<String, String>() {
+        {
+            put("nb", "Ukedager");
+            put("nn", "Ukedager");
         }
     });
 
     private final String defaultTekst;
     private final Map<String, String> sprakTekster;
 
-    Omfang(String defaultTekst, Map<String, String> sprakTekster) {
+    Arbeidsdager(String defaultTekst, Map<String, String> sprakTekster) {
         this.defaultTekst = defaultTekst;
         this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
     }
 
-    Omfang(String defaultTekst) {
+    Arbeidsdager(String defaultTekst) {
         this(defaultTekst, Collections.emptyMap());
     }
 

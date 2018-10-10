@@ -1,11 +1,15 @@
-package no.nav.arbeid.pam;
+package no.nav.arbeid.pam.kodeverk.ansettelse;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.sun.jndi.ldap.EntryChangeResponseControl;
 
 @SuppressWarnings({"serial", "unused"})
-public enum Arbeidsdager implements Kode {
+public enum Arbeidstid implements Kode {
 
 
     DAGTID("DAGTID", new HashMap<String, String>() {
@@ -24,7 +28,7 @@ public enum Arbeidsdager implements Kode {
 
     NATT("NATT", new HashMap<String, String>() {
         {
-            put("nb", "Natt");
+            put("no", "Natt");
             put("nn", "Natt");
         }
     });
@@ -32,12 +36,13 @@ public enum Arbeidsdager implements Kode {
     private final String defaultTekst;
     private final Map<String, String> sprakTekster;
 
-    Arbeidsdager(String defaultTekst, Map<String, String> sprakTekster) {
+    Arbeidstid(String defaultTekst, Map<String, String> sprakTekster) {
         this.defaultTekst = defaultTekst;
+        //Collections.unmodifiableMap(sprakTekster.entrySet().stream().collect(Collectors.toMap(entry->((Locale)entry.getKey()).getLanguage(), entry->entry.getValue())));
         this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
     }
 
-    Arbeidsdager(String defaultTekst) {
+    Arbeidstid(String defaultTekst) {
         this(defaultTekst, Collections.emptyMap());
     }
 

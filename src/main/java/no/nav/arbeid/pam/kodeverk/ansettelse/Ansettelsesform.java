@@ -1,4 +1,4 @@
-package no.nav.arbeid.pam;
+package no.nav.arbeid.pam.kodeverk.ansettelse;
 
 import java.util.Collections;
 import java.util.HashMap;
