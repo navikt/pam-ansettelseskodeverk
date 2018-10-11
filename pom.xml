@@ -7,7 +7,7 @@
 	<groupId>no.nav.arbeid.pam</groupId>
 	<artifactId>pam-ansettelseskodeverk</artifactId>
 	<packaging>jar</packaging>
-	<version>1.8-SNAPSHOT</version>
+	<version>1.8</version>
 
 	<name>pam-ansettelseskodeverk</name>
 	<description>Felles ansettelseskodeverk for PAM</description>
