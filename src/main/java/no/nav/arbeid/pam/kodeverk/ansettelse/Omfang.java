@@ -1,42 +1,33 @@
 package no.nav.arbeid.pam.kodeverk.ansettelse;
 
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.BOKMAL;
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.NYNORSK;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings({"serial", "unused"})
+@SuppressWarnings("serial")
 public enum Omfang implements Kode {
 
-
-    HELTID("HELTID", new HashMap<String, String>() {
+    HELTID(new HashMap<String, String>() {
         {
-            put("nb", "Heltid");
-            put("nn", "Heltid");
+            put(BOKMAL, "Heltid");
+            put(NYNORSK, "Heltid");
         }
     }),
 
-    DELTID("DELTID", new HashMap<String, String>() {
+    DELTID(new HashMap<String, String>() {
         {
-            put("nb", "Deltid");
-            put("nn", "Deltid");
+            put(BOKMAL, "Deltid");
+            put(NYNORSK, "Deltid");
         }
     });
 
-    private final String defaultTekst;
     private final Map<String, String> sprakTekster;
 
-    Omfang(String defaultTekst, Map<String, String> sprakTekster) {
-        this.defaultTekst = defaultTekst;
+    Omfang(Map<String, String> sprakTekster) {
         this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
-    }
-
-    Omfang(String defaultTekst) {
-        this(defaultTekst, Collections.emptyMap());
-    }
-
-    @Override
-    public String defaultTekst() {
-        return defaultTekst;
     }
 
     @Override

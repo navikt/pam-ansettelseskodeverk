@@ -1,48 +1,40 @@
 package no.nav.arbeid.pam.kodeverk.ansettelse;
 
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.BOKMAL;
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.NYNORSK;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings({"serial", "unused"})
+@SuppressWarnings({"serial"})
 public enum Arbeidsdager implements Kode {
 
-    LOERDAG("LØRDAG", new HashMap<String, String>() {
+    LOERDAG(new HashMap<String, String>() {
         {
-            put("nb", "Lørdag");
-            put("nn", "Lørdag");
+            put(BOKMAL, "Lørdag");
+            put(NYNORSK, "Lørdag");
         }
     }),
 
-    SOENDAG("SØNDAG", new HashMap<String, String>() {
+    SOENDAG(new HashMap<String, String>() {
         {
-            put("nb", "Søndag");
-            put("nn", "Søndag");
+            put(BOKMAL, "Søndag");
+            put(NYNORSK, "Søndag");
         }
     }),
 
-    UKEDAGER("UKEDAGER", new HashMap<String, String>() {
+    UKEDAGER(new HashMap<String, String>() {
         {
-            put("nb", "Ukedager");
-            put("nn", "Ukedager");
+            put(BOKMAL, "Ukedager");
+            put(NYNORSK, "Ukedager");
         }
     });
 
-    private final String defaultTekst;
     private final Map<String, String> sprakTekster;
 
-    Arbeidsdager(String defaultTekst, Map<String, String> sprakTekster) {
-        this.defaultTekst = defaultTekst;
+    private Arbeidsdager(Map<String, String> sprakTekster) {
         this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
-    }
-
-    Arbeidsdager(String defaultTekst) {
-        this(defaultTekst, Collections.emptyMap());
-    }
-
-    @Override
-    public String defaultTekst() {
-        return defaultTekst;
     }
 
     @Override

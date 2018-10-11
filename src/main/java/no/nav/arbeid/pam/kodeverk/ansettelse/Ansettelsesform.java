@@ -1,97 +1,89 @@
 package no.nav.arbeid.pam.kodeverk.ansettelse;
 
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.BOKMAL;
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.NYNORSK;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings({"serial", "unused"})
+@SuppressWarnings({"serial"})
 public enum Ansettelsesform implements Kode {
 
-    ENGASJEMENT("ENGASJEMENT", new HashMap<String, String>() {
+    ENGASJEMENT(new HashMap<String, String>() {
         {
-            put("nb", "Engasjement");
-            put("nn", "Engasjement");
+            put(BOKMAL, "Engasjement");
+            put(NYNORSK, "Engasjement");
         }
     }),
 
-    FAST("FAST", new HashMap<String, String>() {
+    FAST(new HashMap<String, String>() {
         {
-            put("nb", "Fast");
-            put("nn", "Fast");
+            put(BOKMAL, "Fast");
+            put(NYNORSK, "Fast");
         }
     }),
 
-    FERIEJOBB("FERIEJOBB", new HashMap<String, String>() {
+    FERIEJOBB(new HashMap<String, String>() {
         {
-            put("nb", "Feriejobb");
-            put("nn", "Feriejobb");
+            put(BOKMAL, "Feriejobb");
+            put(NYNORSK, "Feriejobb");
         }
     }),
 
-    PROSJEKT("PROSJEKT", new HashMap<String, String>() {
+    PROSJEKT(new HashMap<String, String>() {
         {
-            put("nb", "Prosjekt");
-            put("nn", "Prosjekt");
+            put(BOKMAL, "Prosjekt");
+            put(NYNORSK, "Prosjekt");
         }
     }),
 
-    SELVSTENDIG_NAERINGSDRIVENDE("SELVSTENDIG NÆRINGSDRIVENDE", new HashMap<String, String>() {
+    SELVSTENDIG_NAERINGSDRIVENDE(new HashMap<String, String>() {
         {
-            put("nb", "Selvstendig næringsdrivende");
-            put("nn", "Selvstendig næringsdrivende");
+            put(BOKMAL, "Selvstendig næringsdrivende");
+            put(NYNORSK, "Selvstendig næringsdrivende");
         }
     }),
 
-    SESONG("SESONG", new HashMap<String, String>() {
+    SESONG(new HashMap<String, String>() {
         {
-            put("nb", "Sesong");
-            put("nn", "Sesong");
+            put(BOKMAL, "Sesong");
+            put(NYNORSK, "Sesong");
         }
     }),
 
-    VIKARIAT("VIKARIAT", new HashMap<String, String>() {
+    VIKARIAT(new HashMap<String, String>() {
         {
-            put("nb", "Vikariat");
-            put("nn", "Vikariat");
+            put(BOKMAL, "Vikariat");
+            put(NYNORSK, "Vikariat");
         }
     }),
 
-    TRAINEE("TRAINEE", new HashMap<String, String>() {
+    TRAINEE(new HashMap<String, String>() {
         {
-            put("nb", "Trainee");
-            put("nn", "Trainee");
+            put(BOKMAL, "Trainee");
+            put(NYNORSK, "Trainee");
         }
     }),
 
-    LAERLING("LÆRLING", new HashMap<String, String>() {
+    LAERLING(new HashMap<String, String>() {
         {
-            put("nb", "Lærling");
-            put("nn", "Lærling");
+            put(BOKMAL, "Lærling");
+            put(NYNORSK, "Lærling");
         }
     }),
 
-    ANNET("ANNET", new HashMap<String, String>() {
+    ANNET(new HashMap<String, String>() {
         {
-            put("nb", "Annet");
-            put("nn", "Annet");
+            put(BOKMAL, "Annet");
+            put(NYNORSK, "Annet");
         }
     });
 
-    private final String defaultTekst;
     private final Map<String, String> sprakTekster;
 
-    Ansettelsesform(String defaultTekst, Map<String, String> sprakTekster) {
-        this.defaultTekst = defaultTekst;
+    private Ansettelsesform(Map<String, String> sprakTekster) {
         this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
-    }
-
-    Ansettelsesform(String defaultTekst) {
-        this(defaultTekst, Collections.emptyMap());
-    }
-
-    @Override
-    public String defaultTekst() {
-        return defaultTekst;
     }
 
     @Override

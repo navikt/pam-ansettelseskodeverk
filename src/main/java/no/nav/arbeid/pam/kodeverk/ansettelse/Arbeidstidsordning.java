@@ -1,46 +1,36 @@
 package no.nav.arbeid.pam.kodeverk.ansettelse;
 
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.BOKMAL;
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.NYNORSK;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings({"serial", "unused"})
+@SuppressWarnings({"serial"})
 public enum Arbeidstidsordning implements Kode {
 
-    SKIFT("SKIFT", new HashMap<String, String>() {
+    SKIFT(new HashMap<String, String>() {
         {
-            put("nb", "Skift");
-            put("nn", "Skift");
+            put(BOKMAL, "Skift");
+            put(NYNORSK, "Skift");
         }
-    }), @SuppressWarnings("serial")
-    TURNUS("TURNUS", new HashMap<String, String>() {
+    }), TURNUS(new HashMap<String, String>() {
         {
-            put("nb", "Turnus");
-            put("nn", "Turnus");
+            put(BOKMAL, "Turnus");
+            put(NYNORSK, "Turnus");
         }
-    }), @SuppressWarnings("serial")
-    VAKT("VAKT", new HashMap<String, String>() {
+    }), VAKT(new HashMap<String, String>() {
         {
-            put("nb", "Vakt");
-            put("nn", "Vakt");
+            put(BOKMAL, "Vakt");
+            put(NYNORSK, "Vakt");
         }
     });
 
-    private final String defaultTekst;
     private final Map<String, String> sprakTekster;
 
-    Arbeidstidsordning(String defaultTekst, Map<String, String> sprakTekster) {
-        this.defaultTekst = defaultTekst;
+    private Arbeidstidsordning(Map<String, String> sprakTekster) {
         this.sprakTekster = Collections.unmodifiableMap(sprakTekster);
-    }
-
-    Arbeidstidsordning(String defaultTekst) {
-        this(defaultTekst, Collections.emptyMap());
-    }
-
-    @Override
-    public String defaultTekst() {
-        return defaultTekst;
     }
 
     @Override

@@ -1,18 +1,17 @@
 package no.nav.arbeid.pam.kodeverk.ansettelse;
-import org.junit.Test;
-
-import no.nav.arbeid.pam.kodeverk.ansettelse.Omfang;
-
-import java.util.Locale;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+
+import java.util.Locale;
+
+import org.junit.Test;
 
 public class OmfangTest {
 
     @Test
     public void skalGiDefaultTekst() {
-        assertThat(Omfang.HELTID.defaultTekst(), is("HELTID"));
+        assertThat(Omfang.HELTID.defaultTekst(), is("Heltid"));
     }
 
     @Test
@@ -22,7 +21,7 @@ public class OmfangTest {
 
     @Test
     public void skalGiDefaultTekstVedBrukAvIkkeeksisterendeLanguageCode() {
-        assertThat(Omfang.HELTID.tekst(new Locale("ee")), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst(new Locale("ee")), is("Heltid"));
     }
 
     @Test
@@ -37,17 +36,17 @@ public class OmfangTest {
 
     @Test
     public void skalGiKorrektTekstVedBrukAvIkkeeksisterendeIsoString() {
-        assertThat(Omfang.HELTID.tekst("EE"), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst("EE"), is("Heltid"));
     }
 
     @Test
     public void skalGiDefaultTekstVedBrukAvNullIsoString() {
-        assertThat(Omfang.HELTID.tekst((String) null), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst((String) null), is("Heltid"));
     }
 
     @Test
     public void skalGiDefaultTekstVedBrukAvNullLanguageCode() {
-        assertThat(Omfang.HELTID.tekst((Locale) null), is("HELTID"));
+        assertThat(Omfang.HELTID.tekst((Locale) null), is("Heltid"));
     }
 
 }

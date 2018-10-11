@@ -1,10 +1,11 @@
 package no.nav.arbeid.pam.kodeverk.ansettelse;
 
+import static no.nav.arbeid.pam.kodeverk.ansettelse.Sprak.BOKMAL;
+
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
-@SuppressWarnings("unused")
 public interface Kode {
 
     String name();
@@ -13,12 +14,15 @@ public interface Kode {
         return name();
     }
 
-    String defaultTekst();
+    default String defaultTekst() {
+        return Optional.ofNullable(tekster().get(BOKMAL)).orElse(name());
+    }
 
     Map<String, String> tekster();
 
     default String tekst(Locale sprak) {
-        return Optional.ofNullable(sprak).map(lc -> tekst(sprak.getLanguage())).orElse(defaultTekst());
+        return Optional.ofNullable(sprak).map(lc -> tekst(sprak.getLanguage()))
+                .orElse(defaultTekst());
     }
 
     default String tekst(String iso2) {
