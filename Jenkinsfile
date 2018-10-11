@@ -40,11 +40,7 @@ node {
 
 
         stage("build and test") {
-            if (isSnapshot) {
-                sh "${mvn} clean install -Dit.skip=true -Djava.io.tmpdir=/tmp/${application} -B -e"
-            } else {
-                println("POM version is not a SNAPSHOT, it is ${pom.version}. Skipping build and testing of backend")
-            }
+            sh "${mvn} clean install -Djava.io.tmpdir=/tmp/${application} -B -e"
         }
 
         stage("release version") {
@@ -92,6 +88,7 @@ node {
         println "Exception: ${e.message}"
         GString message = ":crying_cat_face: :crying_cat_face: :crying_cat_face: :crying_cat_face: :crying_cat_face: :crying_cat_face: Halp sad cat! \n Siste commit på ${application} gikk ikkje gjennom. Sjå logg for meir info ${env.BUILD_URL}\nLast commit ${changelog}"
         slackSend color: color, channel: '#pam_bygg', message: message, teamDomain: 'nav-it', tokenCredentialId: 'pam-slack'
+        currentBuild.result = 'FAILURE'
     }
 
 }
