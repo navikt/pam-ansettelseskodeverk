@@ -17,7 +17,6 @@ node {
         }
 
         stage("initialize") {
-        	
             println ("Initialize $BRANCH_NAME")
             if (BRANCH_NAME.contains("master")) {                
                 isMaster = true
@@ -25,7 +24,6 @@ node {
                 isMaster = false                
             }
             pom = readMavenPom file: 'pom.xml'
-            currentBuild.description = "#${BUILD_NUMBER}, branch ${BRANCH}, version ${pom.version}"
             releaseVersion = pom.version.tokenize("-")[0]
             isSnapshot = pom.version.contains("-SNAPSHOT")
             committer = sh(script: 'git log -1 --pretty=format:"%an (%ae)"', returnStdout: true).trim()
