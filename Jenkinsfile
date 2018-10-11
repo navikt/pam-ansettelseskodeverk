@@ -49,9 +49,9 @@ node {
                     withCredentials([string(credentialsId: 'navikt-ci-oauthtoken', variable: 'token')]) {
                         sh "${mvn} versions:set -B -DnewVersion=${releaseVersion} -DgenerateBackupPoms=false"
                         sh "git commit -am \"set version to ${releaseVersion} (from Jenkins pipeline)\""
-                        sh ("git push -u https://${token}:x-oauth-basic@github.com/navikt/${application}.git HEAD:$BRANCH_NAME")
+                        sh ("git push -u https://${token}:x-oauth-basic@github.com/navikt/${application}.git $BRANCH_NAME")
                         sh ("git tag -a ${releaseVersion} -m ${application}-${releaseVersion}")
-                        sh ("git push -u https://${token}:x-oauth-basic@github.com/navikt/${application}.git --tags HEAD:$BRANCH_NAME")
+                        sh ("git push -u https://${token}:x-oauth-basic@github.com/navikt/${application}.git --tags $BRANCH_NAME")
                     }
                 }
             }
@@ -72,7 +72,7 @@ node {
                         nextVersion = "${majorMinorVersion}.${patchVersion}-SNAPSHOT"
                         sh "${mvn} versions:set -B -DnewVersion=${nextVersion} -DgenerateBackupPoms=false"
                         sh "git commit -am \"updated to new dev-version ${nextVersion} after release by ${committer} (from Jenkins pipeline)\""
-                        sh "git push -u https://${token}:x-oauth-basic@github.com/navikt/${application}.git HEAD:$BRANCH_NAME"
+                        sh "git push -u https://${token}:x-oauth-basic@github.com/navikt/${application}.git $BRANCH_NAME"
                     }
                 }
             }
