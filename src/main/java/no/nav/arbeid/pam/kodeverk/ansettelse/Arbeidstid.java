@@ -24,13 +24,6 @@ public enum Arbeidstid implements Kode {
         }
     }),
 
-    HELG(new HashMap<String, String>() {
-        {
-            put(BOKMAL, "Helg");
-            put(NYNORSK, "Helg");
-        }
-    }),
-
     NATT(new HashMap<String, String>() {
         {
             put(BOKMAL, "Natt");
