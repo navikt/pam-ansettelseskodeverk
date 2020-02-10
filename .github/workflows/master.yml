@@ -1,4 +1,4 @@
-name: Build and release
+name: Build
 on:
   push:
     branches:
@@ -11,7 +11,6 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '11.x'
-      - name: Run Maven release
- #       run: ./release.sh
- #       env:
- #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: build
+        run: mvn clean install
+
