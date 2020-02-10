@@ -12,6 +12,19 @@
 	<name>pam-ansettelseskodeverk</name>
 	<description>Felles ansettelseskodeverk for PAM</description>
 
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<organization>NAV (Arbeids- og velferdsdirektoratet) - The Norwegian Labour and Welfare Administration</organization>
+			<organizationUrl>https://www.nav.no</organizationUrl>
+		</developer>
+	</developers>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -100,29 +113,17 @@
 
 	<repositories>
 		<repository>
-			<id>repo.adeo.no</id>
-			<name>Maven repo i iApp-sonen</name>
-			<url>https://repo.adeo.no/repository</url>
-		</repository>
-		<repository>
-			<id>confluent</id>
-			<name>Maven repo i iApp-sonen (confluent)</name>
-			<url>https://repo.adeo.no/repository/confluent.io</url>
+			<name>jcenter</name>
+			<id>jcenter</id>
+			<url>http://jcenter.bintray.com/</url>
 		</repository>
 	</repositories>
 
 	<distributionManagement>
 		<repository>
-			<id>m2internal</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>https://repo.adeo.no/repository/maven-releases/</url>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/navikt/pam-ansettelseskodeverk</url>
 		</repository>
-		<snapshotRepository>
-			<id>m2snapshot</id>
-			<name>NAV Maven2 Snapshot Repository</name>
-			<url>https://repo.adeo.no/repository/maven-snapshots/</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
 	</distributionManagement>
 
 </project>
