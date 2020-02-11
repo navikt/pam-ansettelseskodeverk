@@ -12,5 +12,7 @@ jobs:
         with:
           java-version: '11.x'
       - name: build and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./release.sh
 
