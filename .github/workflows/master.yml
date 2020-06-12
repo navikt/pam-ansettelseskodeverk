@@ -1,8 +1,15 @@
-name: Build
+name: Release (Github Package Registry)
+
 on:
   push:
     branches:
-      - master
+      - 'master'
+    paths-ignore:
+      - "README.md"
+      - ".gitignore"
+      - "LICENCE.md"
+      - "CODEOWNERS"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,16 +18,13 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '11.x'
-      - name: build and deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Run release procedure
         run: ./release.sh
-      - name: tag release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git tag -f $(cat .version_tag)
-          git push -f --tags
-
-
