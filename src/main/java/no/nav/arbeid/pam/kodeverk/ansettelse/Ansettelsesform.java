@@ -73,6 +73,13 @@ public enum Ansettelsesform implements Kode {
         }
     }),
 
+    AREMAL(new HashMap<String, String>() {
+        {
+            put(BOKMAL, "Åremål");
+            put(NYNORSK, "Åremål");
+        }
+    }),
+
     ANNET(new HashMap<String, String>() {
         {
             put(BOKMAL, "Annet");
