@@ -80,6 +80,13 @@ public enum Ansettelsesform implements Kode {
         }
     }),
 
+    FRILANSER(new HashMap<String, String>() {
+        {
+            put(BOKMAL, "Frilanser");
+            put(NYNORSK, "Frilanser");
+        }
+    }),
+
     ANNET(new HashMap<String, String>() {
         {
             put(BOKMAL, "Annet");
