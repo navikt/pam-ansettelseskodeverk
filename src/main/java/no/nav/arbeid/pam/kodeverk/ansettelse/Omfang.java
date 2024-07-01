@@ -22,6 +22,20 @@ public enum Omfang implements Kode {
             put(BOKMAL, "Deltid");
             put(NYNORSK, "Deltid");
         }
+    }),
+
+    HELTID_OG_DELTID(new HashMap<String, String>() {
+        {
+            put(BOKMAL, "Heltid_og_Deltid");
+            put(NYNORSK, "Heltid_og_Deltid");
+        }
+    }),
+
+    UKJENT(new HashMap<String, String>() {
+        {
+            put(BOKMAL, "Ukjent");
+            put(NYNORSK, "Ukjent");
+        }
     });
 
     private final Map<String, String> sprakTekster;
